@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Interview_Tracker.Controllers.Job>
+
+@{
+    ViewBag.Title = "Index";
+}
+<link rel="stylesheet" href="~/App_Themes/Theme1/StyleSheet.css" type="text/css" />
+<link rel="stylesheet" href="~/App_Themes/Theme1/bootstrap.css" type="text/css" />
+
+
+
+<body>
+    <div>
+        <div class="p-3 bg-info text-white text-center">
+            <h1>Interview Tracker</h1>
+        </div>
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Candidate")">Candidate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="@Url.Action("Index", "Job")">Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Interview")">Interview</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="table-responsive">
+        <p class="nav-item p-3">
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary btn-sm" })
+        </p>
+        <table class="table shadow  container table-responsive">
+            <thead>
+                <tr class="table-warning">
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.PositionTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Company)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.JobDescription)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApplicationStatus)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PositionTitle)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Company)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.JobDescription)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApplicationStatus)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.JobId }, new { @class = "btn btn-outline-secondary btn-sm" })  |
+                            @Html.ActionLink("Details", "Details", new { id = item.JobId }, new { @class = "btn btn-outline-info btn-sm" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.JobId }, new { @class = "btn btn-outline-danger btn-sm" })
+                        </td>
+                    </tr>
+                }
+
+        </table>
+    </div>
+  
+</body>

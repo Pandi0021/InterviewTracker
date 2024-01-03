@@ -1,0 +1,130 @@
+﻿@model Interview_Tracker.Controllers.Interview
+
+@{
+    ViewBag.Title = "Edit";
+}
+<link rel="stylesheet" href="~/App_Themes/Theme1/StyleSheet.css" type="text/css" />
+<link rel="stylesheet" href="~/App_Themes/Theme1/bootstrap.css" type="text/css" />
+
+<body>
+    <div>
+        <div class="p-3 bg-info text-white text-center">
+            <h1>Interview Tracker</h1>
+        </div>
+
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index", "Candidate")">Candidate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="@Url.Action("Index", "Job")">Job</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active"  href="@Url.Action("Index", "Interview")">Interview</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <div class="container mt-5">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend class ="container ">Edit Interview</legend>
+                <div class="container m-5 m-lg-5 m-sm-5">
+                    @Html.HiddenFor(model => model.InterviewId)
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.CandidateId, "Candidate")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("CandidateId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.CandidateId)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.JobId, "Job")
+                    </div>
+                    <div class="editor-field">
+                        @Html.DropDownList("JobId", String.Empty)
+                        @Html.ValidationMessageFor(model => model.JobId)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.InterviewDate)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.InterviewDate)
+                        @Html.ValidationMessageFor(model => model.InterviewDate)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.InterviewType)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.InterviewType)
+                        @Html.ValidationMessageFor(model => model.InterviewType)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.InterviewerName)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.InterviewerName)
+                        @Html.ValidationMessageFor(model => model.InterviewerName)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.InterviewStatus)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.InterviewStatus)
+                        @Html.ValidationMessageFor(model => model.InterviewStatus)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.FollowUpActions)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.FollowUpActions)
+                        @Html.ValidationMessageFor(model => model.FollowUpActions)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.ThankYouNoteSent)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.ThankYouNoteSent)
+                        @Html.ValidationMessageFor(model => model.ThankYouNoteSent)
+                    </div>
+
+                    <div class="editor-label">
+                        @Html.LabelFor(model => model.Notes)
+                    </div>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Notes)
+                        @Html.ValidationMessageFor(model => model.Notes)
+                    </div>
+                    </div>
+
+                <p class="container ">
+                    <input type="submit" value="Save" class="btn btn-success btn-sm" />|
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info btn-sm" })
+                </p>
+</fieldset>
+     
+
+           
+        }
+
+
+    </div>
+</body>
